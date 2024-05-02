@@ -1,0 +1,214 @@
+/* Globales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to top, rgb(193, 237, 255) 0%, white 100%);
+}
+header  {
+    background-color: #333;
+    color: skyblue;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    
+}
+
+
+/* Add tasks container */
+.add-task-button {
+    padding: 10px 20px;
+    background-color: rgb(52, 198, 255);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-task-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 20px 0; /* Modificado el margen superior a 0 */
+    height: 30vh; /* Altura igual al 100% de la altura de la ventana del navegador */
+    background-image: url('../multimedia/background.png'); /* Añadida la imagen de fondo al contenedor */
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.add-task-section{
+    display: flex;
+    justify-content: center;
+    border: #007bff;
+}
+.add-task-button:hover {
+    background-color:  #007bff;
+}
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+}
+input[type="date"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+}
+
+
+/* Filter Tasks Section */
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 5px 20px 5px;
+    border: 0.1rem solid white;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 14px 0px rgba(115,157,255,1);
+}
+.filter-tasks-button{
+    padding: 10px 20px;
+    color: black;
+    border: 2px solid #ccc;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+}
+.filter-tasks-button:hover {
+    background-color: skyblue;
+    box-shadow: 0px 0px 14px 0px rgba(115,157,255,1);
+}
+.filter-tasks-section{
+    display: flex;
+    justify-content: center;
+    margin: 20px 5px 20px 5px;
+    border: #007bff;
+}
+.tasks-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Centra los elementos en el eje vertical */
+    margin: 20px;  /* Uniformiza el margen alrededor de la sección */
+    padding: 20px;  /* Añade un padding para espacio interno */
+    width: 90%;  /* Utiliza el 90% del ancho disponible */
+    max-width: 1000px;  /* Limita el ancho máximo para evitar que sea demasiado grande en pantallas grandes */
+    border: 0.1rem solid #007bff;  /* Utiliza un color más visible para el borde */
+    border-radius: 0.5rem;  /* Mantiene el borde redondeado */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* Suaviza la sombra para un look más moderno */
+    transition: box-shadow 0.3s ease-in-out;  /* Transición suave para el efecto de sombra */
+}
+
+.tasks-section:hover {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);  /* Efecto de sombra más pronunciado al pasar el ratón */
+}
+
+/* SHOW TASKS SECTION */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: flex; /* Usa display flex para controlar la alineación */
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px; /* Añade un pequeño margen inferior entre elementos */
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.task-header, li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.task-header span, li span {
+    flex: 1; /* Divide el espacio disponible uniformemente entre los spans */
+    text-align: left; /* Alinea el texto a la izquierda */
+    padding: 0 10px; /* Añade padding horizontal */
+}
+
+.task-title { flex: 2; } /* Ocupa más espacio */
+.task-description { flex: 10; } /* Ocupa mucho más espacio debido al contenido potencialmente más largo */
+.task-date { flex: 2; } /* Espacio estándar para fechas */
+.task-importance { flex: 1; } /* Menos espacio, solo palabras clave */
+.task-status { flex: 1; } /* Menos espacio, solo palabras clave */
+
+/* TASKS BUTTONS*/
+
+.complete-button {
+    background-color: white;
+    color: black;
+    border: none; 
+    border-radius: 50%; /* Borde redondeado para hacer un círculo */
+    width: 2rem; /* Tamaño del botón */
+    height: 2rem;
+    font-size: 1rem; /* Tamaño de la fuente */
+    line-height: 1; /* Ajusta la alineación vertical */
+    cursor: pointer; /* Cursor al pasar sobre el botón */
+    margin-right: 1rem; /* Espaciado entre los botones */
+    display: flex; /* Hace que el contenido se alinee verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+}
+
+.complete-button:hover {
+    background-color: lightgreen; 
+}
+
+.complete-button:focus {
+    outline: none; /* Elimina el contorno al hacer clic */
+}
+
+.delete-button {
+    background-color: lightcoral; 
+    color: black; 
+    border: none;
+    border-radius: 50%; 
+    width: 2rem; 
+    height: 2rem;
+    font-size: 1.5rem; 
+    line-height: 1; 
+    cursor: pointer; 
+    margin-right: 10px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.delete-button:hover {
+    background-color: red; 
+}
+
+.delete-button:focus {
+    outline: none; 
+}

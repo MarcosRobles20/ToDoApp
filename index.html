@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tasks App</title>
+    <link rel="stylesheet" href="style.css"> <!-- Archivo de estilos CSS -->
+</head>
+<body>
+    <header>My ToDo App</header>
+
+        <div class="add-task-container"> 
+            <div class="add-task-section">
+                <form id="tasks-form">
+                    <input type="text" id="tasks-title" placeholder="Task title">
+                    <input type="text" id="tasks-description" placeholder="Task description">
+                    <input type="date" id="tasks-date">
+                    <select id="tasks-importance" name="tasks-importance">
+                        <option value="low">Low importance</option>
+                        <option value="medium">Medium importance</option>
+                        <option value="high">High importance</option>
+                    </select>
+                    <select id="tasks-status" name="tasks-status">
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                    <button class="add-task-button" type="submit">Add Task</button>
+                </form>
+            </div>
+        </div>
+        
+    <main> 
+        <section>
+            <h2>Filter tasks</h2>
+            <div class="filter-tasks-section">
+                <button class="filter-tasks-button" onclick="filterTasks('all')">All</button>
+                <button class="filter-tasks-button" onclick="filterTasks('completed')">Completed</button>
+                <button class="filter-tasks-button" onclick="filterTasks('pending')">Pending</button>
+                <button class="filter-tasks-button" onclick="sortTasks('asc')">Sort by Date Asc</button>
+                <button class="filter-tasks-button" onclick="sortTasks('desc')">Sort by Date Desc</button>
+                <button class="filter-tasks-button" onclick="sortTasks('importance')">Sort by Importance</button>
+                <input type="text" id="task-search" placeholder="Search tasks" onkeyup="searchTasks()">
+            </div>
+        </section>
+        <section class="tasks-section">
+            <h2>Tasks</h2>
+            <div class="task-header">
+                <span>Title</span>
+                <span>Description</span>
+                <span>Due Date</span>
+                <span>Importance</span>
+                <span>Status</span>
+                
+            </div>
+            <ul id="tasks-list">
+                <!-- Aquí se añadirán dinámicamente las tareas -->
+            </ul>
+        </section>    
+    </main>
+    <script src="script.js"></script> <!-- Archivo JavaScript -->
+</body>
+</html>
