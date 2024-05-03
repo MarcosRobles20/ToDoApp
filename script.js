@@ -21,8 +21,11 @@ function addTask(title, description, dueDate, importance, status) {
     descriptionCell.textContent = description;
     const dueDateCell = document.createElement('span');
     dueDateCell.textContent = dueDate;
+    dueDateCell.setAttribute('data-due-date', dueDate);
+
     const importanceCell = document.createElement('span');
     importanceCell.textContent = importance;
+    importanceCell.setAttribute('data-importance', importance);
     const statusCell = document.createElement('span');
     statusCell.textContent = status;
 
@@ -85,11 +88,38 @@ function filterTasks(status) {
         }
     });
 }
-function sortTask(dueDate) {
-    const allTasks = document.querySelectorAll('.task-item');
-    
-    allTasks.forEach(task => {
-        if (task.dueDate === dueDate) {
+
+
+function sortTasks(criteria) {
+    let tasks = Array.from(document.querySelectorAll('#tasks-list li'));
+    tasks.sort((a, b) => {
+        let aDate = a.querySelector('[data-due-date]').getAttribute('data-due-date');
+        let bDate = b.querySelector('[data-due-date]').getAttribute('data-due-date');
+        let aImportance = a.querySelector('[data-importance]').getAttribute('data-importance');
+        let bImportance = b.querySelector('[data-importance]').getAttribute('data-importance');
+
+        if (criteria === 'asc') {
+            return new Date(aDate) - new Date(bDate);
+        } else if (criteria === 'desc') {
+            return new Date(bDate) - new Date(aDate);
+        } else if (criteria === 'importance') {
+            const importanceLevels = { 'low': 1, 'medium': 2, 'high': 3 };
+            return importanceLevels[bImportance] - importanceLevels[aImportance];
+        }
+    });
+
+    const parent = document.getElementById('tasks-list');
+    parent.innerHTML = ''; // Clear the list
+    tasks.forEach(task => parent.appendChild(task)); // Append sorted tasks
+}
+
+function searchTasks() {
+    let query = document.getElementById('task-search').value.toLowerCase();
+    let tasks = document.querySelectorAll('#tasks-list li');
+
+    tasks.forEach(task => {
+        let title = task.querySelector('span').textContent.toLowerCase();
+        if (title.includes(query)) {
             task.style.display = '';
         } else {
             task.style.display = 'none';
